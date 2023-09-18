@@ -13,8 +13,19 @@ An initial step in assessing the relationship between variables is to create a c
 
 Using the life expectancy data we see that GNP per capita and life expectancy have a positive correlation coefficient of around 0.7.
 
-	sysuse lifeexp, clear
-	corr lexp gnppc
+```
+. sysuse lifeexp, clear
+(Life expectancy, 1998)
+
+. corr lexp gnppc
+(obs=63)
+
+        |     lexp    gnppc
+──────────────────────────
+   lexp |   1.0000
+  gnppc |   0.7182   1.0000
+
+```
 
 In policy research, you often only collect data of a small random sample of the whole population. The population will have one true mean value, but each random sample will have slightly different sets of values with slightly different means. If you take enough samples from a population, the means will be arranged into a distribution around the true population mean. This is called the sampling distribution.
 
@@ -28,7 +39,21 @@ The two-tailed t-test in the bottom centre evaluates the null against an alterna
 
 Suppose we want to know whether the population mean of life expectancy is significantly different from 70. We can test the null hypothesis that the mean is equal to 70 using the following command:
 
-	ttest lexp == 70
+```
+. ttest lexp == 70
+
+One-sample t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+    lexp |      68    72.27941    .5718159    4.715315    71.13806    73.42076
+------------------------------------------------------------------------------
+    mean = mean(lexp)                                             t =   3.9863
+H0: mean = 70                                    Degrees of freedom =       67
+
+    Ha: mean < 70               Ha: mean != 70                 Ha: mean > 70
+ Pr(T < t) = 0.9999         Pr(|T| > |t|) = 0.0002          Pr(T > t) = 0.0001
+```
 
 
 ## 5.2 Linear Regression {#s52}
@@ -37,9 +62,31 @@ We can use a linear regression to further investigate the relationship between l
 
 **Practical Exercise: Run a linear regression.**
 
-	sysuse lifeexp, clear
-	gen log_gnppc = log(gnppc)
-	regress lexp log_gnppc popgrowth safewater
+```
+. sysuse lifeexp, clear
+(Life expectancy, 1998)
+
+. gen log_gnppc = log(gnppc)
+(5 missing values generated)
+
+. regress lexp log_gnppc popgrowth safewater
+
+      Source |       SS           df       MS      Number of obs   =        37
+-------------+----------------------------------   F(3, 33)        =     33.30
+       Model |  722.137692         3  240.712564   Prob > F        =    0.0000
+    Residual |   238.56501        33  7.22924274   R-squared       =    0.7517
+-------------+----------------------------------   Adj R-squared   =    0.7291
+       Total |  960.702703        36  26.6861862   Root MSE        =    2.6887
+
+------------------------------------------------------------------------------
+        lexp | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   log_gnppc |   1.493245    .551269     2.71   0.011     .3716798     2.61481
+   popgrowth |  -.5310035   .5548132    -0.96   0.345    -1.659779    .5977725
+   safewater |   .1385733   .0394751     3.51   0.001     .0582607    .2188859
+       _cons |    49.6063   3.547374    13.98   0.000     42.38911    56.82348
+------------------------------------------------------------------------------
+```
 
 ### 5.2.1 Interpreting Regression Output Tables
 
@@ -61,7 +108,30 @@ We can choose which region to use as a base. To specify North America (coded as 
 
 **Practical Exercise: Run a linear regression with dummy variables.**
 
-	regress lexp log_gnppc popgrowth safewater i.region
+```
+. regress lexp log_gnppc popgrowth safewater i.region
+
+      Source |       SS           df       MS      Number of obs   =        37
+-------------+----------------------------------   F(5, 31)        =     18.95
+       Model |  723.836248         5   144.76725   Prob > F        =    0.0000
+    Residual |  236.866455        31  7.64085337   R-squared       =    0.7534
+-------------+----------------------------------   Adj R-squared   =    0.7137
+       Total |  960.702703        36  26.6861862   Root MSE        =    2.7642
+
+--------------------------------------------------------------------------------
+          lexp | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+     log_gnppc |   1.586536   .6088676     2.61   0.014     .3447419    2.828329
+     popgrowth |  -.2782813   .7849757    -0.35   0.725     -1.87925    1.322687
+     safewater |   .1335213   .0423067     3.16   0.004     .0472362    .2198064
+               |
+        region |
+North America  |   -.612925   1.400706    -0.44   0.665    -3.469683    2.243833
+South America  |  -.6228757   1.497229    -0.42   0.680    -3.676495    2.430743
+               |
+         _cons |   49.23628   3.759722    13.10   0.000     41.56827    56.90428
+--------------------------------------------------------------------------------
+```
 
 ### 5.2.3 Interaction Effects
 
@@ -71,7 +141,27 @@ Starting with two continuous variables, suppose we think the effect of safe drin
 
 **Practical Exercise: Interact continuous variables.**
 
-	regress lexp log_gnppc safewater c.safewater#c.safewater
+```
+. regress lexp log_gnppc safewater c.safewater#c.safewater
+
+      Source |       SS           df       MS      Number of obs   =        37
+-------------+----------------------------------   F(3, 33)        =     37.04
+       Model |  740.746457         3  246.915486   Prob > F        =    0.0000
+    Residual |  219.956246        33  6.66534078   R-squared       =    0.7710
+-------------+----------------------------------   Adj R-squared   =    0.7502
+       Total |  960.702703        36  26.6861862   Root MSE        =    2.5817
+
+----------------------------------------------------------------------------------------
+                   lexp | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+------------------------+---------------------------------------------------------------
+              log_gnppc |   2.212724   .5762273     3.84   0.001      1.04038    3.385067
+              safewater |   .4402642   .1591055     2.77   0.009     .1165615    .7639668
+                        |
+c.safewater#c.safewater |   -.002323    .001194    -1.95   0.060    -.0047522    .0001062
+                        |
+                  _cons |   34.25524   7.264115     4.72   0.000     19.47629     49.0342
+----------------------------------------------------------------------------------------
+```
 
 The coefficient estimate on the square of `safewater` is negative. This means that the effect is decreasing in safe water access (for countries with higher access to safe water, the marginal gains from improving safe water access are smaller).
 
@@ -79,7 +169,30 @@ We might also think that the effect of safe drinking water on life expectancy va
 
 **Practical Exercise: Interact continuous variables with categorical variables.**
 
-	regress lexp log_gnppc popgrowth safewater i.region#c.safewater
+```
+. regress lexp log_gnppc popgrowth safewater i.region#c.safewater
+
+      Source |       SS           df       MS      Number of obs   =        37
+-------------+----------------------------------   F(5, 31)        =     18.94
+       Model |  723.770406         5  144.754081   Prob > F        =    0.0000
+    Residual |  236.932296        31   7.6429773   R-squared       =    0.7534
+-------------+----------------------------------   Adj R-squared   =    0.7136
+       Total |  960.702703        36  26.6861862   Root MSE        =    2.7646
+
+------------------------------------------------------------------------------------
+              lexp | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+         log_gnppc |   1.523157    .580035     2.63   0.013     .3401674    2.706146
+         popgrowth |  -.5400662   .7261172    -0.74   0.463    -2.020992    .9408597
+         safewater |   .1362441   .0409431     3.33   0.002     .0527401    .2197482
+                   |
+region#c.safewater |
+    North America  |    .004114   .0172491     0.24   0.813    -.0310659    .0392938
+    South America  |   -.003567   .0180154    -0.20   0.844    -.0403096    .0331756
+                   |
+             _cons |   49.53485   3.779901    13.10   0.000     41.82569    57.24401
+------------------------------------------------------------------------------------
+```
 
 The two variables tell us that the effect safe water access on life expectancy does not vary significantly by region (since the p-values are greater than 0.05).
 
@@ -91,8 +204,16 @@ We have already established the meaning of the t statistics and p-values in the 
 
 **Practical Exercise: Hypothesis test.**
 
-	quiet regress lexp log_gnppc popgrowth safewater
-	test _b[log_gnppc] == 1
+```
+. quiet regress lexp log_gnppc popgrowth safewater
+
+. test _b[log_gnppc] == 1
+
+ ( 1)  log_gnppc = 1
+
+       F(  1,    33) =    0.80
+            Prob > F =    0.3774
+```
 
 Here I use <code><u>qui</u>et</code> to suppress the regression output, which is useful when we are only interested in the hypothesis test results.  As the p-value is greater than 0.05, we fail to reject the null hypothesis that the coefficient on income is equal to 1. We can also hypothesis test linear combinations of coefficients: `test _b[log_gnppc] - _b[safewater] == 0`. To test non-linear combinations, use the testnl command. For joint hypothesise, include test in separate brackets: `test (_b[log_gnppc] == 0) (_b[safewater] == 0)`.
 
@@ -100,7 +221,13 @@ Here I use <code><u>qui</u>et</code> to suppress the regression output, which is
 
 We have explored how to deal with categorical variables on the right-hand side of our regressions. Now let us see how to deal with categorical outcome variables using a probit (or logit) regression in Stata. To illustrate this, let us generate a categorical variable equal to 1 if a country’s life expectancy is greater than 70 and zero otherwise.
 
-	gen high_lexp = lexp > 70
+```
+. quiet reg high_lexp log_gnppc
+
+. predict high_lexp_prediction
+(option xb assumed; fitted values)
+(5 missing values generated)
+```
 
 The reason we can’t run a simple linear regression in that the outcome variable can only take on the values of 0 or 1, but a linear regression would generate a continuous prediction which could be lower than 0 or greater than 1. To examine this graphically, use the `predict` command which stores the predicted values of a regression (see `help predict` for more detail), and plot these predicted values against our binary outcome.
 
@@ -127,10 +254,52 @@ It is important to recognise that the coefficient estimates from these regressio
 
 Use the probit model for the effect of log GNP per capita on the likelihood of being a “high life expectancy” country. We can summarise the predicted values to verify that they lie between 0 and 1.
 
-	probit high_lexp log_gnppc
-	predict high_lexp_probit
-	sum high_lexp_probit
-	margins, dydx(log_gnppc)
+```
+. probit high_lexp log_gnppc
+
+Iteration 0:   log likelihood = -41.345943  
+Iteration 1:   log likelihood = -28.858118  
+Iteration 2:   log likelihood = -28.512014  
+Iteration 3:   log likelihood = -28.511079  
+Iteration 4:   log likelihood = -28.511078  
+
+Probit regression                                       Number of obs =     63
+                                                        LR chi2(1)    =  25.67
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -28.511078                             Pseudo R2     = 0.3104
+
+------------------------------------------------------------------------------
+   high_lexp | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   log_gnppc |   .7923054   .1956773     4.05   0.000     .4087849    1.175826
+       _cons |  -5.951921   1.519856    -3.92   0.000    -8.930783   -2.973058
+------------------------------------------------------------------------------
+
+. predict high_lexp_probit
+(option pr assumed; Pr(high_lexp))
+(5 missing values generated)
+
+. sum high_lexp_probit
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+high_lexp_~t |         63    .6432734    .2870433   .1026455   .9927263
+
+. margins, dydx(log_gnppc)
+
+Average marginal effects                                    Number of obs = 63
+Model VCE: OIM
+
+Expression: Pr(high_lexp), predict()
+dy/dx wrt:  log_gnppc
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   log_gnppc |   .1994692   .0241786     8.25   0.000     .1520799    .2468585
+------------------------------------------------------------------------------
+```
 
 ## 5.5 Instrumental Variable Regression {#s55}
 
@@ -144,8 +313,30 @@ To estimate at instrumental variable regression in Stata, we can use the <code><
 
 **Practical Exercise: Estimate an instrumental variable regression.**
 
-	use http://fmwww.bc.edu/ec-p/data/wooldridge/card, clear
-	ivreg lwage (educ = nearc4) exper
+```
+. use http://fmwww.bc.edu/ec-p/data/wooldridge/card, clear
+
+. ivreg lwage (educ = nearc4) exper
+
+Instrumental variables 2SLS regression
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(2, 3007)      =     29.01
+       Model | -245.292502         2 -122.646251   Prob > F        =    0.0000
+    Residual |  837.934114     3,007  .278661162   R-squared       =         .
+-------------+----------------------------------   Adj R-squared   =         .
+       Total |  592.641611     3,009  .196956335   Root MSE        =    .52788
+
+------------------------------------------------------------------------------
+       lwage | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        educ |   .2620434   .0344996     7.60   0.000     .1943982    .3296886
+       exper |   .1119277   .0147441     7.59   0.000     .0830182    .1408373
+       _cons |   1.794982   .5869679     3.06   0.002     .6440832    2.945882
+------------------------------------------------------------------------------
+Instrumented: educ
+ Instruments: exper nearc4
+```
 
 ## 5.6 Exporting Regression Tables {#s56}
 
@@ -155,15 +346,43 @@ You can save estimates from regressions using the <code><u>est</u>imates <u>sto<
 
 **Practical Exercise: Exporting a regression output table.**
 
-	sysuse lifeexp, clear
-	gen log_gnppc = log(gnppc)	
-	quiet reg lexp log_gnppc popgrowth safewater
-	est store regression1
-	quiet reg lexp log_gnppc popgrowth safewater i.region c.safewater#c.safewater
-	est store regression2
-	esttab regression1 regression2, ar2 nocons
-	esttab regression1 regression2 using "regression_table_example.doc", ar2 nocons replace
+```
+. quiet reg lexp log_gnppc popgrowth safewater
 
+. est store regression1
+
+. quiet reg lexp log_gnppc popgrowth safewater i.region c.safewater#c.safewater
+
+. est store regression2
+
+. esttab regression1 regression2, ar2 nocons
+
+--------------------------------------------
+                      (1)             (2)   
+                     lexp            lexp   
+--------------------------------------------
+log_gnppc           1.493*          2.418** 
+                   (2.71)          (3.56)   
+popgrowth          -0.531         -0.0124   
+                  (-0.96)         (-0.02)   
+safewater           0.139**         0.500** 
+                   (3.51)          (3.01)   
+2.region                           -1.134   
+                                  (-0.85)   
+3.region                           -1.756   
+                                  (-1.18)   
+c.safewate~r                     -0.00290*  
+                                  (-2.27)   
+--------------------------------------------
+N                      37              37   
+adj. R-sq           0.729           0.748   
+--------------------------------------------
+t statistics in parentheses
+* p<0.05, ** p<0.01, *** p<0.001
+
+. esttab regression1 regression2 using "regression_table_example.doc", ar2
+(output written to regression_table_example.doc)
+```
 
 
 
