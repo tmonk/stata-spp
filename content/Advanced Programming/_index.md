@@ -145,10 +145,38 @@ Stata
 
 ## 6.3 Frames {#s63}
 	
+So far, we have been loading one dataset into Stata’s memory at a time. However, Stata can handle multiple datasets simultaneously using data frames, which work with the <code><u>frame</u>s</code> command. You can create frames, change between them, delete them and rename them with the following commands: `frame create framename`, `frame change framename`, `frame drop framename`,  `frame rename oldname newname`. 
 
+**Practical Exercise: Using data frames in Stata.**
 
+For a practical example, try creating a new frame with a subset of the life expectancy variables and switch between frames.
 
+```
+. sysuse lifeexp, clear
+(Life expectancy, 1998)
 
+. frames
+  (current frame is default)
+
+. frame rename default main
+
+. frames put country gnppc lexp, into(subset)
+
+. frames dir
+  main    68 x 6; Life expectancy, 1998
+* subset  68 x 3; Life expectancy, 1998
+
+Note: Frames marked with * contain unsaved data.
+
+. frame change subset
+
+. g log_gnppc = log(gnppc)
+(5 missing values generated)
+
+. frame change main
+```
+
+Frames can be easily managed through the menus “Data -> Frames Manager”. There are many more applications of frames, type `help frames` to learn more.
 
 
 
