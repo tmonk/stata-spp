@@ -28,3 +28,26 @@
 }
 
 a:hover.td-sidebar-link.tree-root{color: #8c8c8c;}
+
+@media  (max-width: 770px) {
+    nav.td-navbar > .container-fluid{
+        height: 3rem !important;
+    }
+    .td-search{
+        display: none;
+    }
+    
+    .td-sidebar .btn-link{
+        margin-top: -145px;
+        z-index: 100;
+    }
+    
+    .td-404 main, .td-main main{
+        margin-top: -5em;
+    }
+
+    .td-sidebar-nav{
+        margin-bottom: 3em;
+        margin-top: -3em;
+    }
+}
