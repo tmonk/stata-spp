@@ -3,7 +3,10 @@ title: Advanced Programming
 author: T. Hall, T. Monk, J. Dittmar, LSE
 weight: 600
 ---
+
+{{% pageinfo color="info" %}}
 This section provides a basic introduction to more advanced programming in Stata. We introduce macros, loops, and data frames which will allow you to use Stata more efficiently.
+{{% /pageinfo %}}
 
 ## 6.1 Macros {#s61}
 

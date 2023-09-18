@@ -3,9 +3,12 @@ title: Graphics
 author: T. Hall, T. Monk, J. Dittmar, LSE
 weight: 400
 ---
+
+{{% pageinfo color="info" %}}
 Graphs are a powerful tool for exploring, summarising, and presenting data. They are an intuitive and engaging medium for policy researchers to present their results. Stata provides a powerful set of tools for graphing data and for saving graphs that may be embedded in written work or presentations.
 
 We first show how to plot two variables against each other or to plot a variable over time using the <code><u>two</u>way</code> command. Then we show how to format `twoway` graphs by adding labels, titles, and legends. We also explore other plot types which can be used to describe data (bar plots, box plots, histograms, and density plots). 
+{{% /pageinfo %}}
 
 ## 4.1 Two-way Plots {#s41}
 

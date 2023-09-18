@@ -3,7 +3,9 @@ title: Data Manipulation
 author: T. Hall, T. Monk, J. Dittmar, LSE
 weight: 300
 ---
+{{% pageinfo color="info" %}}
 This section introduces basic commands for manipulating data in Stata. We will work with one dataset at a time. In Section 6 we will cover how to work with multiple datasets using “frames”.
+{{% /pageinfo %}}
 
 ## 3.1 Importing Data {#s31}
 
