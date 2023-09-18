@@ -7,7 +7,7 @@ Quantitative data analysis is a cornerstone of public policy research. Stata is 
 
 This guide is an introduction to Stata, suitable for an audience that has no background in using statistical software. First, we provide an overview of Stata (section 2), including how to download and open Stata, type commands, organise Stata files, and get help. We then discuss how to view and manipulate data (section 3), how to create graphs (section 4), and how to perform regression analysis in Stata (section 5). Finally, we introduce more advanced concepts including data frames, loops, and macros (section 6). 
 
-This document is designed to accompany the PP455 course in quantitative methods for policy analysis. It is a complement rather than a substitute for the core readings, lectures, and course material. Stata commands throughout the guide will be shown using blue `typewriter font`.
+This document is designed to accompany the PP455 course in quantitative methods for policy analysis. It is a complement rather than a substitute for the core readings, lectures, and course material. Stata commands throughout the guide will be shown using `typewriter font`.
 
 ## 1.1 The Power of Stata {#s11}
 
