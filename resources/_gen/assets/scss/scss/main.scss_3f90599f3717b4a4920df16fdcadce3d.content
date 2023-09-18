@@ -18712,6 +18712,16 @@ div.drawioframe {
 a:hover.td-sidebar-link.tree-root {
   color: #8c8c8c; }
 
+.pageinfo {
+  margin-left: 0; }
+
+.td-sidebar-toc {
+  position: sticky;
+  top: 0;
+  height: calc(100vh);
+  overflow-y: auto;
+  padding-top: 2em; }
+
 @media (max-width: 770px) {
   nav.td-navbar > .container-fluid, nav.td-navbar > .container-sm, nav.td-navbar > .container-md, nav.td-navbar > .container-lg, nav.td-navbar > .container-xl, nav.td-navbar > .container-xxl {
     height: 3rem !important; }
