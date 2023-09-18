@@ -3,7 +3,10 @@ title: Regression Analysis
 author: T. Hall, T. Monk, J. Dittmar, LSE
 weight: 500
 ---
+
+{{% pageinfo color="info" %}}
 Regressions are one of the most powerful data analysis tools. One of the great advantages of Stata is the ease and flexibility with which you can estimate regressions. This section provides an introduction to regression analysis using Stata.
+{{% /pageinfo %}}
 
 ## 5.1 Correlation Tables and T-tests {#s51}
 

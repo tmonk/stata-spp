@@ -29,6 +29,10 @@
 
 a:hover.td-sidebar-link.tree-root{color: #8c8c8c;}
 
+.pageinfo{
+    margin-left: 0;
+}
+
 @media  (max-width: 770px) {
     nav.td-navbar > .container-fluid{
         height: 3rem !important;
