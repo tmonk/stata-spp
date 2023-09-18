@@ -20,19 +20,42 @@ A global macro is defined using `global name text` or `global name=expression`. 
 
 To see how macros might be used in practice, suppose we need to run lots of regressions using the life expectancy data, all of which include a set of standard controls `safewater popgrowth c.safewater#c.safewater`. To avoid having to type these out each time, define the control variables in the global macro `$controls`.
 
-	global controls "safewater popgrowth c.safewater#c.safewater"
-	su $controls
-	sysuse lifeexp, clear
-	reg lexp gnppc $controls
+```
+. global controls "safewater popgrowth c.safewater#c.safewater"
+
+. su $controls
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   safewater |         40        76.1    17.89112         28        100
+   popgrowth |         68    .9720588    .9311918        -.5          3
+             |
+ c.safewater#|
+ c.safewater |         40      6103.3    2611.293        784      10000
+
+. reg lexp gnppc $controls
+
+```
 
 Now as another example, to standardise the value of GNP per capita we subtract its mean and divide by the standard deviation. This can be easily achieved using local macros. Remember that local macros must be executed in a single go from a do file – they will not work if you run each command line separately.
 
 **Practical Exercise: using local macros to standardise a variable.**
 
-	sum gnppc
-	local u = r(mean)
-	local std = r(sd)
-	g z_gnppc = (gnppc - `u')/`std'
+```
+. sum gnppc
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       gnppc |         63    8674.857    10634.68        370      39980
+
+. local u = r(mean)
+
+. local std = r(sd)
+
+. g z_gnppc = (gnppc - `u')/`std'
+(5 missing values generated)
+
+```
 
 ## 6.2 Loops {#s62}
 
@@ -87,8 +110,27 @@ Foreach loops can be useful when used in conjunction with the `levelsof` command
 
 Summarise GNP per capita for each region using a loop and levelsof.
 
-	levelsof region, local(region_list)
-	foreach i in `region_list' {su gnppc if region == `i'}
+```
+. levelsof region, local(region_list)
+1 2 3
+
+. foreach i in `region_list' {    
+  2.         su gnppc if region == `i'       
+  3. }
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       gnppc |         41    10738.05    11793.66        370      39980
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       gnppc |         12    5817.167    8929.484        410      29240
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       gnppc |         10        3645    2254.528       1010       8030
+
+```
 
 We can also use foreach loops to loop over words. 
 
@@ -101,7 +143,7 @@ love
 Stata
 ```
 
-
+## 6.3 Frames {#s63}
 	
 
 
