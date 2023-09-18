@@ -23,7 +23,7 @@ Stata comes with a few sample data files. One of these has information on life e
 
 To load the life expectancy data file, type `sysuse lifeexp.dta`.
 
-```
+```stata
 . sysuse lifeexp, clear 
 (Life expectancy, 1998) 
 ```
@@ -38,7 +38,7 @@ Another way to view data in Stata is using the <code><u>l</u>ist</code> command.
 
 To see how many variables and observations are in a data file we do not need to look directly at the data. We can type <code><u>d</u>escribe</code> in the command window.
 
-```
+```stata
 . describe 
  
 Contains data from \\rlab-app\StataSE$\ado\base/l/lifeexp.dta 
@@ -67,7 +67,7 @@ Variable names can have up to 32 characters, are case sensitive, and cannot incl
 
 Change the name and label of the `safewater` variable, adding more information which is found in the `notes`.
 
-```
+```stata
 . rename safewater access_to_safe_water
 . label var access_to_safe_water "Access to safe water, % of population"
 ```
@@ -86,7 +86,7 @@ You can create or edit variable labels in Stata using <code><u>l</u>abel define<
 
 Replace the current labels in our data with shorthand labels “EU & C.A”, “NA”, “SA”.
 
-```
+```stata
 . label list region
 region:
            1 Europe & C. Asia
@@ -115,7 +115,7 @@ To convert a labelled numeric variable to a string, we similarly use the <code><
 
 Let us convert the string variable `country` to a labelled numeric variable and back to a string again.
 
-```
+```stata
 . encode country, gen(country_code)
 
 . decode country_code, gen(country_string)
@@ -131,7 +131,7 @@ One of the first things you will want to do with your data is to summarise its m
 
 Run simple descriptive statistics for GNP per capita.
 
-```
+```stata
 . summarize gnppc 
  
     Variable │        Obs        Mean    Std. dev.       Min        Max 
@@ -152,7 +152,7 @@ Frequency tables are useful for summarising categorical data. They can be create
 
 Create a frequency table of regions in the life expectancy data, showing how many countries there are in each region and what percentage of all countries each region makes up.
 
-```
+```stata
 . table region, stat(frequency) stat(percent)
 ───────────────────┬─────────────────────
                    │  Frequency   Percent
@@ -178,7 +178,7 @@ To specify the number of decimal places to show in our tables use the `nformat()
 
 Add the mean life expectancy and GNP per capita for each region to our frequency table.
 
-```
+```stata
 . table region, stat(freq) stat(mean gnppc) stat(mean lexp) nformat(%12.2fc)
 ───────────────────────────────────────────────────────────────────────────
                    |  Frequency                      Mean                  
@@ -199,7 +199,7 @@ We can also use the `table` command in a similar way to `summarize` by specifyin
 
 For GNP per capita, create a table with the average, standard deviation, number of observations, and min/max values. This gives us exactly the same results as using the `summarize` command we learned above.
 
-```
+```stata
 . table  , statistic(count gnppc) statistic(mean gnppc) statistic(sd gnppc) statistic(max gnppc) statistic(min gnppc) nformat(%12.2fc)
 
 ────────────────────────────────────────
@@ -276,7 +276,7 @@ Results of the `summarize` command are stored by Stata in `r()`. These can also 
 
 In quantitative analysis, demeaning or centering is when we calculate the deviation of a variable from its mean value. The `summarize` command in conjunction with `generate` can be used to achieve this.  For example, if we wanted a new variable with the deviation of life expectancy from its mean value, we would run the following:
 
-```
+```stata
 . sum lexp
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -341,7 +341,7 @@ Create 3 new variables from the life expectancy data:
 - A continuous variable called wellbeing equal to the natural logarithm of GNP per capita added a quarter of life expectancy.
 - A dummy variable called missing_any equal to one if any variable is missing for the observation.
 
-```
+```stata
 . sysuse lifeexp, clear 
 (Life expectancy, 1998) 
 
@@ -378,7 +378,7 @@ To go between “long” and “wide” data, we use the `reshape` command. The 
 
 Reshape the blood pressure data from long to wide and back again.
 
-```
+```stata
 . sysuse bplong, clear
 (Fictional blood-pressure data)
 
@@ -423,7 +423,7 @@ Notice that the variable names need to be the same for Stata to append the datas
 
 Append data on the population of counties in California and Illinois. 
 
-```
+```stata
 . use https://www.stata-press.com/data/r18/capop, clear
 
 . list
@@ -462,7 +462,7 @@ When a merge is performed in Stata, Stata generates a variable called `_merge` w
 
 Merge data on the weight and length of car makes to information on price and mileage.  
 
-```
+```stata
 . use https://www.stata-press.com/data/r18/autosize, clear
 (1978 automobile data)
 

@@ -20,7 +20,7 @@ A global macro is defined using `global name text` or `global name=expression`. 
 
 To see how macros might be used in practice, suppose we need to run lots of regressions using the life expectancy data, all of which include a set of standard controls `safewater popgrowth c.safewater#c.safewater`. To avoid having to type these out each time, define the control variables in the global macro `$controls`.
 
-```
+```stata
 . global controls "safewater popgrowth c.safewater#c.safewater"
 
 . su $controls
@@ -41,7 +41,7 @@ Now as another example, to standardise the value of GNP per capita we subtract i
 
 **Practical Exercise: using local macros to standardise a variable.**
 
-```
+```stata
 . sum gnppc
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -78,7 +78,7 @@ Here `i` is the name of the local macro that will be set to each number in the s
 
 For example, to create dummy variables to represent 5-year age groups between 20 and 50:
 
-```
+```stata
 . forvalues bot = 20(5)45 {
     local top = `bot' + 4
     gen age`bot'to`top' = age >= `bot' & age <= `top'
@@ -99,7 +99,7 @@ If you wanted to loop over an irregular sequence of numbers, you would need to u
 
 For example, to create a new variable for GNP per capita in $00s or $000s:
 
-```
+```stata
 . foreach i in 100 1000 {
      gen gnppc_by`i' = gnppc / `i'
   }
@@ -110,7 +110,7 @@ Foreach loops can be useful when used in conjunction with the `levelsof` command
 
 Summarise GNP per capita for each region using a loop and levelsof.
 
-```
+```stata
 . levelsof region, local(region_list)
 1 2 3
 
@@ -134,7 +134,7 @@ Summarise GNP per capita for each region using a loop and levelsof.
 
 We can also use foreach loops to loop over words. 
 
-```
+```stata
 . foreach word in I love Stata {
        display "`word'"
   }
@@ -151,7 +151,7 @@ So far, we have been loading one dataset into Stata’s memory at a time. Howeve
 
 For a practical example, try creating a new frame with a subset of the life expectancy variables and switch between frames.
 
-```
+```stata
 . sysuse lifeexp, clear
 (Life expectancy, 1998)
 

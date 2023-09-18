@@ -16,7 +16,7 @@ An initial step in assessing the relationship between variables is to create a c
 
 Using the life expectancy data we see that GNP per capita and life expectancy have a positive correlation coefficient of around 0.7.
 
-```
+```stata
 . sysuse lifeexp, clear
 (Life expectancy, 1998)
 
@@ -42,7 +42,7 @@ The two-tailed t-test in the bottom centre evaluates the null against an alterna
 
 Suppose we want to know whether the population mean of life expectancy is significantly different from 70. We can test the null hypothesis that the mean is equal to 70 using the following command:
 
-```
+```stata
 . ttest lexp == 70
 
 One-sample t test
@@ -65,7 +65,7 @@ We can use a linear regression to further investigate the relationship between l
 
 **Practical Exercise: Run a linear regression.**
 
-```
+```stata
 . sysuse lifeexp, clear
 (Life expectancy, 1998)
 
@@ -111,7 +111,7 @@ We can choose which region to use as a base. To specify North America (coded as 
 
 **Practical Exercise: Run a linear regression with dummy variables.**
 
-```
+```stata
 . regress lexp log_gnppc popgrowth safewater i.region
 
       Source |       SS           df       MS      Number of obs   =        37
@@ -144,7 +144,7 @@ Starting with two continuous variables, suppose we think the effect of safe drin
 
 **Practical Exercise: Interact continuous variables.**
 
-```
+```stata
 . regress lexp log_gnppc safewater c.safewater#c.safewater
 
       Source |       SS           df       MS      Number of obs   =        37
@@ -172,7 +172,7 @@ We might also think that the effect of safe drinking water on life expectancy va
 
 **Practical Exercise: Interact continuous variables with categorical variables.**
 
-```
+```stata
 . regress lexp log_gnppc popgrowth safewater i.region#c.safewater
 
       Source |       SS           df       MS      Number of obs   =        37
@@ -207,7 +207,7 @@ We have already established the meaning of the t statistics and p-values in the 
 
 **Practical Exercise: Hypothesis test.**
 
-```
+```stata
 . quiet regress lexp log_gnppc popgrowth safewater
 
 . test _b[log_gnppc] == 1
@@ -230,7 +230,7 @@ gen high_lexp = lexp > 70
 
 The reason we can’t run a simple linear regression in that the outcome variable can only take on the values of 0 or 1, but a linear regression would generate a continuous prediction which could be lower than 0 or greater than 1. To examine this graphically, use the `predict` command which stores the predicted values of a regression (see `help predict` for more detail), and plot these predicted values against our binary outcome.
 
-```
+```stata
 . quiet reg high_lexp log_gnppc
 
 . predict high_lexp_prediction
@@ -240,7 +240,7 @@ The reason we can’t run a simple linear regression in that the outcome variabl
 
 The issue is clear from the graph below: for countries with a log GNP per capita greater than 10, the predicted value is greater than 1.
 
-```
+```stata
 . twoway (scatter high_lexp log_gnppc, mcolor(navy)) ///
     (scatter high_lexp_prediction log_gnppc, mcolor(dkgreen)) ///
     , xtitle("Log  GNP per capita") ///
@@ -258,7 +258,7 @@ It is important to recognise that the coefficient estimates from these regressio
 
 Use the probit model for the effect of log GNP per capita on the likelihood of being a “high life expectancy” country. We can summarise the predicted values to verify that they lie between 0 and 1.
 
-```
+```stata
 . probit high_lexp log_gnppc
 
 Iteration 0:   log likelihood = -41.345943  
@@ -317,7 +317,7 @@ To estimate at instrumental variable regression in Stata, we can use the <code><
 
 **Practical Exercise: Estimate an instrumental variable regression.**
 
-```
+```stata
 . use http://fmwww.bc.edu/ec-p/data/wooldridge/card, clear
 
 . ivreg lwage (educ = nearc4) exper
@@ -350,7 +350,7 @@ You can save estimates from regressions using the <code><u>est</u>imates <u>sto<
 
 **Practical Exercise: Exporting a regression output table.**
 
-```
+```stata
 . quiet reg lexp log_gnppc popgrowth safewater
 
 . est store regression1

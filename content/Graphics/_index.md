@@ -22,7 +22,7 @@ The basic syntax of a scatterplot in Stata is `twoway scatter yvar xvar`. Notice
 
 To produce a simple scatterplot which shows how life expectancy changes with log GNP per capita by country.
 
-``` 
+```stata
 . sysuse lifeexp, clear
 (Life expectancy, 1998)
 
@@ -39,7 +39,7 @@ To plot the line of best fit between two variables, use the `lfit` plot type in 
 
 To produce a simple scatterplot of log GNP per capita and life expectancy by country.
 
-``` 
+```stata
 . twoway (scatter lexp log_gnppc) (lfit lexp log_gnppc)
 ``` 
 
@@ -47,7 +47,7 @@ Confidence bands around a fitted line depict the upper and lower bounds between 
 
 **Practical Exercise: Adding confidence bands to a line of best fit.**
 
-``` 
+```stata
 . twoway (lfitci lexp log_gnppc, level(95)) ///
 	(scatter lexp log_gnppc) ///
 	, xtitle("Log GNP per capita") ///
@@ -68,7 +68,7 @@ Line plots are also created using the `twoway` command and specifying the `line`
 
 To produce a line graph of life expectancy for white and black males over the 20th century.
 
-``` 
+```stata
 . sysuse uslifeexp, clear
 (U.S. life expectancy, 1900-1999)
 
@@ -89,7 +89,7 @@ The main option used when labelling scatter plot points is `, mlabel(var)` which
 
 To add country names to the points in our scatterplot.
 
-``` 
+```stata
 . sysuse lifeexp, clear
 (Life expectancy, 1998)
 
@@ -108,7 +108,7 @@ Plotting this graph, you will see that there are many overlapping labels which c
 
 To label only the country Haiti in our scatterplot:
 
-``` 
+```stata
 . graph twoway (lfitci lexp log_gnppc) ///
  (scatter lexp log_gnppc, msize(small) mcolor(black)) ///
  (scatter lexp log_gnppc if country == "Haiti", msize(small) mcolor(black) mlabel(country) mlabsize(small) mlabcolor(black))
@@ -124,7 +124,7 @@ The `legend` option has many sub options, see `help legend_option` to learn more
 Adding titles, notes, text, and modifying the legend of our scatterplot, the graph command becomes:
 
 
-```
+```stata
 . graph twoway (lfitci lexp log_gnppc) ///
  (scatter lexp log_gnppc ///
      , msize(small) mcolor(black)) ///
@@ -145,7 +145,7 @@ We might want to plot also plot life expectancy on a log scale. `xscale()` and `
 
 To specify the life expectancy range as 50 to 80 on a logarithmic scale in our scatterplot:
 
-```
+```stata
 . graph twoway (lfitci lexp log_gnppc) ///
   (scatter lexp log_gnppc ///
       , msize(small) mcolor(black)) ///
@@ -177,7 +177,7 @@ To modify the line style in a line plot, the `clstyle()` option lets you use inb
 
 To specify blue for white males and red for black males in our line plot, we use the following command:
 
-```
+```stata
 . twoway (line le_wmale le_bmale year, clcolor(blue red)) ///
     , title("U.S. Life Expectancy") subtitle("Males") ///
       legend(order(1 "white" 2 "black"))
@@ -189,7 +189,7 @@ Stata uses schemes to control the appearance of graphs, see `help scheme`. Try `
 
 Line plot of white and black male life expectancy over the 20th century in the style of The Economist.
 
-```
+```stata
 . twoway line le_wmale le_bmale year, clcolor(blue red) ///
     , title("U.S. Life Expectancy") subtitle("Males") ///
       legend(order(1 "white" 2 "black")) ///
@@ -209,7 +209,7 @@ Bar graphs are useful when we want to display categorical data, or to plot descr
 
 A simple bar chart of the frequency distribution of the region variable can be obtained from the following commands.
 
-```
+```stata
 . sysuse citytemp, clear 
 (City temperature data)
 
@@ -223,7 +223,7 @@ Using the over() option overlays the two bars in the same graph. Using the by() 
 
 **Practical Exercise: Bar graph with mean of a continuous variable.**
 
-```
+```stata
 . graph bar (mean) tempjan (mean) tempjul, over(region) ///
       bargap(10) title(Mean Temperature) legend(order(1 “January” 2 “July”)) ///
       scheme(s1color) bar(1, color(dkgreen)) bar(2, color(navy))
@@ -239,7 +239,7 @@ From the bar chart above, we can see that the northern regions (north-east and n
 
 To draw the box plot for January temperatures in northern regions (regions coded 1 and 2), use the `graph box` command.
 
-```
+```stata
 . sysuse citytemp, clear 
 (City temperature data)
 
@@ -257,7 +257,7 @@ For a more detailed view of the distribution of a single variable, we can create
 
 **Practical Exercise: Overlay a histogram and Kernel-density plot.**
 
-```
+```stata
 . sysuse lifeexp, clear
 (Life expectancy, 1998)
 
@@ -274,7 +274,7 @@ We often assume that a variable is approximately distributed with a normal distr
 
 **Practical Exercise: Overlay a normal and Kernel-density plot.**
 
-```
+```stata
 . kdensity lexp, normal ///
          title("Distribution of Life Expectancy, 1998") ///
          ytitle("Density") ///

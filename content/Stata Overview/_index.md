@@ -21,7 +21,7 @@ The bottom *Command* window will be your main interface with Stata. Type your co
 
 Stata can work as a calculator using the <code><u>d</u>isplay</code> command. Type the following in the command box and press the “enter” key to execute the command. This should return the following in our results window. The command should also appear in the history tab.
 
-```
+```stata
 .  display 2+10 
 12
 ```
@@ -50,7 +50,7 @@ When working on a Stata project, we should save all our data and do files into o
  
 Create a folder to be your Stata working directory for this guide. Save your do file here and change the working directory in Stata. You can then execute the do file by simply typing <code>do dofilename</code> in the command window.
 
-```
+```stata
 . cd "C:\Users\beveridgew\Projects\Stata resource"
 C:\Users\beveridgew\Projects\Stata resource
 
