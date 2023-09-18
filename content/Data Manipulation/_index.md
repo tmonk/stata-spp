@@ -19,9 +19,12 @@ Stata comes with a few sample data files. One of these has information on life e
 
 **Practical Exercise: Load life expectancy data.**
 
-To load the life expectancy data file, type sysuse lifeexp.dta.
+To load the life expectancy data file, type `sysuse lifeexp.dta`.
 
-	sysuse lifeexp, clear
+```
+. sysuse lifeexp, clear 
+(Life expectancy, 1998) 
+```
 
 Stata holds the data in memory like an excel file. But unlike excel, the main Stata interface does not show us our rows and columns of data. To see the actual data, select “Data - > Data Editor -> Data Browse” from the menus or click the data browse icon in the toolbar. Note there is also a “Data Edit” option which allows you to modify datapoints. We never use this option in data analysis, as we want to ensure that all changes made to our data are reproducible.
 
@@ -33,7 +36,26 @@ Another way to view data in Stata is using the <code><u>l</u>ist</code> command.
 
 To see how many variables and observations are in a data file we do not need to look directly at the data. We can type <code><u>d</u>escribe</code> in the command window.
 
-	describe
+```
+. describe 
+ 
+Contains data from \\rlab-app\StataSE$\ado\base/l/lifeexp.dta 
+Observations:            68                  Life expectancy, 1998 
+    Variables:             6                  26 Mar 2020 09:40 
+                                              (_dta has notes) 
+────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value 
+    name         type    format    label      Variable label 
+────────────────────────────────────────────────────────────────────────────────────────
+region          byte    %16.0g     region     Region 
+country         str28   %28s                  Country 
+popgrowth       float   %9.0g               * Avg. annual % growth 
+lexp            byte    %9.0g               * Life expectancy at birth 
+gnppc           float   %9.0g               * GNP per capita 
+safewater       byte    %9.0g               * Safe water 
+                                            * indicated variables have notes 
+────────────────────────────────────────────────────────────────────────────────────────
+```
 
 This produces a description of the dataset in memory, listing the variable names and their labels. The dataset has notes that you can see by typing `notes`. Four of the variables have annotations that you can see by typing `notes varname`. You can also see some of this information at a glance in the *Variables* window.
 
@@ -43,9 +65,10 @@ Variable names can have up to 32 characters, are case sensitive, and cannot incl
 
 Change the name and label of the `safewater` variable, adding more information which is found in the `notes`.
 
-	rename safewater access_to_safe_water
-	label var access_to_safe_water "Access to safe water, % of population"
-
+```
+. rename safewater access_to_safe_water
+. label var access_to_safe_water "Access to safe water, % of population"
+```
 
 ## 3.3 Types of Variables {#s33}
 
@@ -61,10 +84,24 @@ You can create or edit variable labels in Stata using <code><u>l</u>abel define<
 
 Replace the current labels in our data with shorthand labels “EU & C.A”, “NA”, “SA”.
 
-	label list region
-	label define region 1 "EU & C.A" 2 "NA" 3 "SA", replace
-	label values region region
-	label list region
+```
+. label list region
+region:
+           1 Europe & C. Asia
+           2 North America
+           3 South America
+
+. label define region 1 "EU & C.A" 2 "NA" 3 "SA", replace
+
+. label values region region
+
+. label list region
+region:
+           1 EU & C.A
+           2 NA
+           3 SA
+
+```
 
 If a variable has been read as a string but really contains only numerical values, you will want to use the command `destring`, specifying either the `, replace` option to replace the original string with a numeric variable, or `, gen(varname)` to keep both variables and save the numeric variable with `varname`. 
 
@@ -76,8 +113,11 @@ To convert a labelled numeric variable to a string, we similarly use the <code><
 
 Let us convert the string variable `country` to a labelled numeric variable and back to a string again.
 
-	encode country, gen(country_code)
-	decode country_code, gen(country_string)
+```
+. encode country, gen(country_code)
+
+. decode country_code, gen(country_string)
+```
 
 If you have done this correctly, `country_string` and `country` should be identical (check in data browser). 
 
@@ -89,7 +129,14 @@ One of the first things you will want to do with your data is to summarise its m
 
 Run simple descriptive statistics for GNP per capita.
 
-	summarize gnppc 
+```
+. summarize gnppc 
+ 
+    Variable │        Obs        Mean    Std. dev.       Min        Max 
+─────────────┼───────────────────────────────────────────────────────── 
+       gnppc │         63    8674.857    10634.68        370      39980 
+
+```
 
 GNP per capita ranges from $370 to $39,980 with an average of $8,675. We also see that Stata reports only 63 observations on GNP per capita, so we must have some missing values. We discuss how to deal with missing values in section 3.6.6. below.
 
@@ -103,7 +150,19 @@ Frequency tables are useful for summarising categorical data. They can be create
 
 Create a frequency table of regions in the life expectancy data, showing how many countries there are in each region and what percentage of all countries each region makes up.
 
-	table region, stat(frequency) stat(percent)
+```
+. table region, stat(frequency) stat(percent)
+───────────────────┬─────────────────────
+                   │  Frequency   Percent
+───────────────────┼─────────────────────
+Region             |                     
+  Europe & C. Asia |         44     64.71
+  North America    |         14     20.59
+  South America    |         10     14.71
+  Total            |         68    100.00
+───────────────────┼─────────────────────
+
+```
 
 This is only suitable for variables with relatively few entries, such as categorical data. As with all commands, this can also be accessed through the menus via “Statistics -> Summaries -> Frequency tables -> One-way tables”.
 
@@ -117,7 +176,20 @@ To specify the number of decimal places to show in our tables use the `nformat()
 
 Add the mean life expectancy and GNP per capita for each region to our frequency table.
 
-	table region, stat(freq) stat(mean gnppc) stat(mean lexp) nformat(%12.2fc)
+```
+. table region, stat(freq) stat(mean gnppc) stat(mean lexp) nformat(%12.2fc)
+───────────────────────────────────────────────────────────────────────────
+                   |  Frequency                      Mean                  
+                   |              GNP per capita   Life expectancy at birth
+───────────────────────────────────────────────────────────────────────────
+Region             |                                                       
+  Europe & C. Asia |      44.00        10,738.05                      73.07
+  North America    |      14.00         5,817.17                      71.21
+  South America    |      10.00         3,645.00                      70.30
+  Total            |      68.00         8,674.86                      72.28
+───────────────────────────────────────────────────────────────────────────
+
+```
 
 We can also use the `table` command in a similar way to `summarize` by specifying all the summary statistics of a single variable. 
 
@@ -125,7 +197,18 @@ We can also use the `table` command in a similar way to `summarize` by specifyin
 
 For GNP per capita, create a table with the average, standard deviation, number of observations, and min/max values. This gives us exactly the same results as using the `summarize` command we learned above.
 
-	table  , statistic(count gnppc) statistic(mean gnppc) statistic(sd gnppc) statistic(max gnppc) statistic(min gnppc) nformat(%12.2fc)
+```
+. table  , statistic(count gnppc) statistic(mean gnppc) statistic(sd gnppc) statistic(max gnppc) statistic(min gnppc) nformat(%12.2fc)
+
+────────────────────────────────────────
+Number of nonmissing values |      63.00
+Mean                        |   8,674.86
+Standard deviation          |  10,634.68
+Maximum value               |  39,980.00
+Minimum value               |     370.00
+────────────────────────────────────────
+
+```
 
 ## 3.6 Generating New Variables {#s36}
 
@@ -191,8 +274,16 @@ Results of the `summarize` command are stored by Stata in `r()`. These can also 
 
 In quantitative analysis, demeaning or centering is when we calculate the deviation of a variable from its mean value. The `summarize` command in conjunction with `generate` can be used to achieve this.  For example, if we wanted a new variable with the deviation of life expectancy from its mean value, we would run the following:
 
-	sum lexp
-	gen dm_lexp = lexp - r(mean)
+```
+. sum lexp
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+        lexp |         68    72.27941    4.715315         54         79
+
+. gen dm_lexp = lexp - r(mean)
+
+```
 
 ### 3.6.4 Recode
 
@@ -200,18 +291,25 @@ The `recode` command is used to group a numeric variable into categories.
 
 Suppose for example, we wanted to group countries into three life expectancy age categories: “high” for above 75, “medium” for between 65 and 75 inclusive, and “low” for below 65. This could be done by:
 
-	recode lexp (min/64 = 1) (65/75 = 2) (76/max = 3), gen(lexp_category)
+```
+recode lexp (min/64 = 1) (65/75 = 2) (76/max = 3), gen(lexp_category)
+```
 
 A range is specified using a slash and includes the two boundaries. So 65/75 is 65 to 75 inclusive. You can use `min` to refer to the smallest value and `max` to refer to the largest value of the variable you are recoding. 
 
 Then apply labels using commands described above:
- 
-	label define lexp_category 1 "low" 2 "medium" 3 "high", replace
-	label values lexp_category lexp_category
+
+```
+label define lexp_category 1 "low" 2 "medium" 3 "high", replace
+label values lexp_category lexp_category
+```
 
 Or you can specify value labels in each recoding rule:
 
-	recode lexp (min/64 = 1 low) (65/75 = 2 medium) (76/max = 3 high), gen(lexp_cat)
+```
+recode lexp (min/64 = 1 low) (65/75 = 2 medium) (76/max = 3 high), gen(lexp_cat)
+```
+	
 
 ### 3.6.5 Sorting and Counting
 
@@ -241,13 +339,30 @@ Create 3 new variables from the life expectancy data:
 - A continuous variable called wellbeing equal to the natural logarithm of GNP per capita added a quarter of life expectancy.
 - A dummy variable called missing_any equal to one if any variable is missing for the observation.
 
-	sysuse lifeexp, clear 
-	sum gnppc
-	gen rich = gnppc > r(mean)
-	replace rich = . if missing(gnppc)
-	gen wellbeing = ln(gnppc) + lexp/4
-	gen missing_any = 0
-	replace missing_any = 1 if missing(region) | missing(country) | missing(popgrowth) | missing(lexp) | missing(gnppc) | missing(safewater) | missing(rich)
+```
+. sysuse lifeexp, clear 
+(Life expectancy, 1998) 
+
+. sum gnppc
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       gnppc |         63    8674.857    10634.68        370      39980
+
+. gen rich = gnppc > r(mean)
+
+. replace rich = . if missing(gnppc)
+(5 real changes made, 5 to missing)
+
+. gen wellbeing = ln(gnppc) + lexp/4
+(5 missing values generated)
+
+. gen missing_any = 0
+
+. replace missing_any = 1 if missing(region) | missing(country) | missing(popgrowth) | missing(lexp) | missing(gnppc) | missing(safewater) | missing(rich)
+(31 real changes made)
+
+```
 
 ## 3.7 Reshaping Datasets {#s37}
 
@@ -261,11 +376,38 @@ To go between “long” and “wide” data, we use the `reshape` command. The 
 
 Reshape the blood pressure data from long to wide and back again.
 
-	sysuse bplong, clear
-	reshape wide bp, i(patient) j(when)
-	reshape long bp, i(patient) j(when)
-	label define when 1 "before" 2 "after", replace
-	label values when when
+```
+. sysuse bplong, clear
+(Fictional blood-pressure data)
+
+. reshape wide bp, i(patient) j(when)
+(j = 1 2)
+
+Data                               Long   ->   Wide
+-----------------------------------------------------------------------------
+Number of observations              240   ->   120         
+Number of variables                   5   ->   5           
+j variable (2 values)              when   ->   (dropped)
+xij variables:
+                                     bp   ->   bp1 bp2
+-----------------------------------------------------------------------------
+
+. reshape long bp, i(patient) j(when)
+(j = 1 2)
+
+Data                               Wide   ->   Long
+-----------------------------------------------------------------------------
+Number of observations              120   ->   240         
+Number of variables                   5   ->   5           
+j variable (2 values)                     ->   when
+xij variables:
+                                bp1 bp2   ->   bp
+-----------------------------------------------------------------------------
+. label define when 1 "before" 2 "after", replace
+
+. label values when when
+
+```
 
 ## 3.8 Joining Datasets {#s38}
 
@@ -279,12 +421,36 @@ Notice that the variable names need to be the same for Stata to append the datas
 
 Append data on the population of counties in California and Illinois. 
 
-	use https://www.stata-press.com/data/r18/capop, clear
-	list
-	append using https://www.stata-press.com/data/r18/ilpop, generate(state)
-	label define state 0 "CA" 1 "IL"
-	label values state state
-	list
+```
+. use https://www.stata-press.com/data/r18/capop, clear
+
+. list
+     +-----------------------+
+     |      county       pop |
+     |-----------------------|
+  1. | Los Angeles   9878554 |
+  2. |      Orange   2997033 |
+  3. |     Ventura    798364 |
+     +-----------------------+
+
+.  append using https://www.stata-press.com/data/r18/ilpop, generate(state)
+. label define state 0 "CA" 1 "IL"
+
+. label values state state
+
+. list
+     +-------------------------------+
+     |      county       pop   state |
+     |-------------------------------|
+  1. | Los Angeles   9878554      CA |
+  2. |      Orange   2997033      CA |
+  3. |     Ventura    798364      CA |
+  4. |        Cook   5285107      IL |
+  5. |      DeKalb    103729      IL |
+  6. |        Will    673586      IL |
+     +-------------------------------+
+
+```
 
 Adding new variables is slightly more difficult. This is done using the <code><u>mer</u>ge</code> command. We can’t just add the information at random, we need to make sure that each observation is matched in each dataset. So, you need a variable in each dataset that uniquely identifies each observation (e.g., country, county, individual, firm). For example, consider two datasets from the Stata website on the weight and length / price and mileage of old car makes. To merge this data, we first need to identify the observation variable, which in this case is the car make. We then tell Stata that one unique car make in the first dataset corresponds to one unique car make in the second by using the command `merge 1:1 make`. Many-to-one (`m:1`) and one-to-many (`1:m`) merges are also possible, see `merge help` for more details. 
 
@@ -294,13 +460,58 @@ When a merge is performed in Stata, Stata generates a variable called `_merge` w
 
 Merge data on the weight and length of car makes to information on price and mileage.  
 
-	use https://www.stata-press.com/data/r18/autosize, clear
-	list
-	use https://www.stata-press.com/data/r18/autoexpense, clear
-	list
-	merge 1:1 make using https://www.stata-press.com/data/r18/autosize
-	list
+```
+. use https://www.stata-press.com/data/r18/autosize, clear
+(1978 automobile data)
 
+. list
+     +------------------------------------+
+     | make               weight   length |
+     |------------------------------------|
+  1. | Toyota Celica       2,410      174 |
+  2. | BMW 320i            2,650      177 |
+  3. | Cad. Seville        4,290      204 |
+  4. | Pont. Grand Prix    3,210      201 |
+  5. | Datsun 210          2,020      165 |
+  6. | Plym. Arrow         3,260      170 |
+     +------------------------------------+
+
+. use https://www.stata-press.com/data/r18/autoexpense, clear
+(1978 automobile data)
+
+. list
+     +---------------------------------+
+     | make                price   mpg |
+     |---------------------------------|
+  1. | Toyota Celica       5,899    18 |
+  2. | BMW 320i            9,735    25 |
+  3. | Cad. Seville       15,906    21 |
+  4. | Pont. Grand Prix    5,222    19 |
+  5. | Datsun 210          4,589    35 |
+     +---------------------------------+
+
+. merge 1:1 make using https://www.stata-press.com/data/r18/autosize 
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             1
+        from master                         0  (_merge==1)
+        from using                          1  (_merge==2)
+
+    Matched                                 5  (_merge==3)
+    -----------------------------------------
+
+. list
+     +--------------------------------------------------------------------+
+     | make                price   mpg   weight   length           _merge |
+     |--------------------------------------------------------------------|
+  1. | BMW 320i            9,735    25    2,650      177      Matched (3) |
+  2. | Cad. Seville       15,906    21    4,290      204      Matched (3) |
+  3. | Datsun 210          4,589    35    2,020      165      Matched (3) |
+  4. | Pont. Grand Prix    5,222    19    3,210      201      Matched (3) |
+  5. | Toyota Celica       5,899    18    2,410      174      Matched (3) |
+  6. | Plym. Arrow             .     .    3,260      170   Using only (2) |
+     +--------------------------------------------------------------------+
+```
 
 
 
