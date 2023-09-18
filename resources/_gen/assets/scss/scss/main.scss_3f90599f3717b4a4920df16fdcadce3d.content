@@ -18709,4 +18709,7 @@ div.drawioframe {
   font-size: 0.8em;
   margin-top: -1em; }
 
+a:hover.td-sidebar-link.tree-root {
+  color: #8c8c8c; }
+
 /*# sourceMappingURL=main.css.map */
