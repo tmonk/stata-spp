@@ -21,7 +21,10 @@ The bottom *Command* window will be your main interface with Stata. Type your co
 
 Stata can work as a calculator using the <code><u>d</u>isplay</code> command. Type the following in the command box and press the “enter” key to execute the command. This should return the following in our results window. The command should also appear in the history tab.
 
-     display 2+10
+```
+.  display 2+10 
+12
+```
 
 Make sure to use a lowercase – Stata commands are case-sensitive! All commands can also be abbreviated (<code><u>d</u></code> will return the same results at <code><u>d</u>isplay</code>); Stata documentation underlines the minimum letters needed to execute a command and we will do the same in this guide.
 
@@ -69,9 +72,9 @@ Stata provides excellent inbuilt access to Help Files, which are descriptions of
 **Practical Exercise: Open a Help file.**
 
 To see the description of the display command, type:
-
+```
 	help display
-
+```
 The best way to understand how a command works is often by looking at examples at the bottom of the Help file. If you do not know a specific command name, you can perform a keyword search or command search through the “Help” tab in the menu bar.
 
 Other recommended resources:
