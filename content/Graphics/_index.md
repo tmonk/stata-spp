@@ -180,7 +180,7 @@ To specify blue for white males and red for black males in our line plot, we use
       legend(order(1 "white" 2 "black"))
 ```
 
-Stata uses schemes to control the appearance of graphs, see `help scheme. Try `stgcolor` for the scheme used in the Stata manuals, `sj` for the scheme used in the Stata journal, and `economist` for the style used by The Economist. 
+Stata uses schemes to control the appearance of graphs, see `help scheme`. Try `stgcolor` for the scheme used in the Stata manuals, `sj` for the scheme used in the Stata journal, and `economist` for the style used by The Economist. 
 
 **Practical Exercise: Using a Stata graph scheme.***
 
