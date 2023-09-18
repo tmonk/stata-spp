@@ -225,17 +225,18 @@ Here I use <code><u>qui</u>et</code> to suppress the regression output, which is
 We have explored how to deal with categorical variables on the right-hand side of our regressions. Now let us see how to deal with categorical outcome variables using a probit (or logit) regression in Stata. To illustrate this, let us generate a categorical variable equal to 1 if a country’s life expectancy is greater than 70 and zero otherwise.
 
 ```
+gen high_lexp = lexp > 70
+```
+
+The reason we can’t run a simple linear regression in that the outcome variable can only take on the values of 0 or 1, but a linear regression would generate a continuous prediction which could be lower than 0 or greater than 1. To examine this graphically, use the `predict` command which stores the predicted values of a regression (see `help predict` for more detail), and plot these predicted values against our binary outcome.
+
+```
 . quiet reg high_lexp log_gnppc
 
 . predict high_lexp_prediction
 (option xb assumed; fitted values)
 (5 missing values generated)
 ```
-
-The reason we can’t run a simple linear regression in that the outcome variable can only take on the values of 0 or 1, but a linear regression would generate a continuous prediction which could be lower than 0 or greater than 1. To examine this graphically, use the `predict` command which stores the predicted values of a regression (see `help predict` for more detail), and plot these predicted values against our binary outcome.
-
-	quiet reg high_lexp log_gnppc
-	predict high_lexp_prediction
 
 The issue is clear from the graph below: for countries with a log GNP per capita greater than 10, the predicted value is greater than 1.
 
