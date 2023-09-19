@@ -293,7 +293,7 @@ The `recode` command is used to group a numeric variable into categories.
 
 Suppose for example, we wanted to group countries into three life expectancy age categories: “high” for above 75, “medium” for between 65 and 75 inclusive, and “low” for below 65. This could be done by:
 
-```
+```stata
 recode lexp (min/64 = 1) (65/75 = 2) (76/max = 3), gen(lexp_category)
 ```
 
@@ -301,14 +301,14 @@ A range is specified using a slash and includes the two boundaries. So 65/75 is 
 
 Then apply labels using commands described above:
 
-```
+```stata
 label define lexp_category 1 "low" 2 "medium" 3 "high", replace
 label values lexp_category lexp_category
 ```
 
 Or you can specify value labels in each recoding rule:
 
-```
+```stata
 recode lexp (min/64 = 1 low) (65/75 = 2 medium) (76/max = 3 high), gen(lexp_cat)
 ```
 	
