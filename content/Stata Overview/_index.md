@@ -72,7 +72,7 @@ Stata provides excellent inbuilt access to Help Files, which are descriptions of
 **Practical Exercise: Open a Help file.**
 
 To see the description of the display command, type:
-```
+```stata
 	help display
 ```
 The best way to understand how a command works is often by looking at examples at the bottom of the Help file. If you do not know a specific command name, you can perform a keyword search or command search through the “Help” tab in the menu bar.
