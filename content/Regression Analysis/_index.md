@@ -224,7 +224,7 @@ Here I use <code><u>qui</u>et</code> to suppress the regression output, which is
 
 We have explored how to deal with categorical variables on the right-hand side of our regressions. Now let us see how to deal with categorical outcome variables using a probit (or logit) regression in Stata. To illustrate this, let us generate a categorical variable equal to 1 if a country’s life expectancy is greater than 70 and zero otherwise.
 
-```
+```stata
 gen high_lexp = lexp > 70
 ```
 
