@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This is a Stata 17.0 generated SVG file (http://www.stata.com) -->
+
+<svg version="1.1" width="5.500in" height="4.000in" viewBox="0 0 3960 2880" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>Stata Graph - Graph</desc>
+	<rect x="0" y="0" width="3960" height="2880" style="fill:#FFFFFF;stroke:none"/>
+	<rect x="0.00" y="0.00" width="3959.88" height="2880.00" style="fill:#FFFFFF"/>
+	<rect x="2.88" y="2.88" width="3954.12" height="2874.24" style="fill:none;stroke:#FFFFFF;stroke-width:5.76"/>
+	<rect x="393.68" y="103.74" width="3462.46" height="2127.01" style="fill:none;stroke:#000000;stroke-width:5.76"/>
+	<path d=" M454.04 1480.59 L487.45 1425.52 L520.86 1338.77 L554.28 1366.37 L587.69 1480.59 L621.10 1441.24 L654.51 1453.12 L687.93 1504.35 L721.46 1350.53 L754.88 1311.17 L788.29 1401.76 L821.70 1295.46 L855.11 1271.69 L888.53 1315.13 L921.94 1240.26 L955.35 1224.42 L988.76 1338.77 L1022.18 1374.29 L1055.59 1855.07 L1089.00 1169.23 L1122.41 1173.19 L1155.83 920.98 L1189.24 987.93 L1222.65 1066.76 L1256.06 960.33 L1289.47 980.13 L1322.89 1070.72 L1356.30 932.73 L1389.71 1070.72 L1423.13 1062.80 L1456.54 964.29 L1489.95 920.98 L1523.36 873.70 L1556.78 846.11 L1590.19 932.73 L1623.60 913.06 L1657.01 1031.36 L1690.43 980.13 L1723.84 826.43 L1757.25 822.47 L1790.66 869.74 L1824.08 779.03 L1857.49 720.00 L1890.90 826.43 L1924.31 775.19 L1957.85 779.03 L1991.26 751.43 L2024.67 747.60 L2058.09 735.72 L2091.50 708.12 L2124.91 696.36 L2158.32 696.36 L2191.74 692.40 L2225.15 684.48 L2258.56 656.89 L2291.97 660.85 L2325.39 656.89 L2358.80 668.77 L2392.21 660.85 L2425.62 656.89 L2459.04 660.85 L2492.45 645.13 L2525.86 648.97 L2559.27 660.85 L2592.69 648.97 L2626.10 652.93 L2659.51 656.89 L2692.92 645.13 L2726.34 656.89 L2759.75 648.97 L2793.16 637.21 L2826.57 625.33 L2859.99 625.33 L2893.40 617.53 L2926.81 597.73 L2960.22 578.05 L2993.64 562.34 L3027.05 550.46 L3060.46 542.54 L3093.87 526.82 L3127.29 530.78 L3160.70 515.06 L3194.24 499.22 L3227.65 495.26 L3261.06 487.47 L3294.47 487.47 L3327.89 483.51 L3361.30 475.59 L3394.71 471.63 L3428.12 459.87 L3461.54 451.95 L3494.95 444.03 L3528.36 432.27 L3561.77 436.23 L3595.19 428.31 L3628.60 424.35 L3662.01 404.68 L3695.42 388.83 L3728.84 381.04 L3762.25 377.08" stroke-linejoin="round" style="fill:none;stroke:#006000;stroke-width:8.64"/>
+	<path d=" M454.04 2036.37 L487.45 2048.25 L520.86 2020.65 L554.28 2067.93 L587.69 2170.40 L621.10 2150.72 L654.51 2063.97 L687.93 2091.56 L721.46 1985.14 L754.88 1969.42 L788.29 1985.14 L821.70 1953.58 L855.11 1902.34 L888.53 1870.79 L921.94 1855.07 L955.35 1839.35 L988.76 1756.56 L1022.18 1859.03 L1055.59 2138.84 L1089.00 1563.38 L1122.41 1524.03 L1155.83 1283.58 L1189.24 1275.65 L1222.65 1437.28 L1256.06 1524.03 L1289.47 1547.67 L1322.89 1594.94 L1356.30 1441.24 L1389.71 1520.07 L1423.13 1516.11 L1456.54 1453.12 L1489.95 1366.37 L1523.36 1236.30 L1556.78 1208.70 L1590.19 1338.77 L1623.60 1295.46 L1657.01 1464.87 L1690.43 1413.64 L1723.84 1279.61 L1757.25 1220.46 L1790.66 1287.54 L1824.08 1248.06 L1857.49 1133.83 L1890.90 1133.83 L1924.31 1117.99 L1957.85 1106.24 L1991.26 1051.04 L2024.67 1035.32 L2058.09 1027.40 L2091.50 995.85 L2124.91 987.93 L2158.32 984.09 L2191.74 987.93 L2225.15 964.29 L2258.56 909.10 L2291.97 897.34 L2325.39 901.30 L2358.80 924.94 L2392.21 913.06 L2425.62 901.30 L2459.04 909.10 L2492.45 873.70 L2525.86 889.42 L2559.27 913.06 L2592.69 901.30 L2626.10 905.26 L2659.51 917.02 L2692.92 897.34 L2726.34 936.69 L2759.75 928.90 L2793.16 952.53 L2826.57 932.73 L2859.99 936.69 L2893.40 917.02 L2926.81 885.46 L2960.22 857.86 L2993.64 838.18 L3027.05 818.51 L3060.46 806.63 L3093.87 794.87 L3127.29 802.67 L3160.70 775.19 L3194.24 751.43 L3227.65 747.60 L3261.06 743.64 L3294.47 755.39 L3327.89 763.31 L3361.30 767.27 L3394.71 779.03 L3428.12 782.99 L3461.54 775.19 L3494.95 771.23 L3528.36 755.39 L3561.77 771.23 L3595.19 759.35 L3628.60 747.60 L3662.01 712.08 L3695.42 668.77 L3728.84 652.93 L3762.25 645.13" stroke-linejoin="round" style="fill:none;stroke:#FF4500;stroke-width:8.64"/>
+	<line x1="390.80" y1="2233.63" x2="390.80" y2="100.86" style="stroke:#000000;stroke-width:5.76"/>
+	<line x1="390.80" y1="2134.88" x2="350.83" y2="2134.88" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="300.72" y="2134.88" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 300.72,2134.88)" text-anchor="middle">30</text>
+	<line x1="390.80" y1="1740.72" x2="350.83" y2="1740.72" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="300.72" y="1740.72" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 300.72,1740.72)" text-anchor="middle">40</text>
+	<line x1="390.80" y1="1346.57" x2="350.83" y2="1346.57" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="300.72" y="1346.57" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 300.72,1346.57)" text-anchor="middle">50</text>
+	<line x1="390.80" y1="952.41" x2="350.83" y2="952.41" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="300.72" y="952.41" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 300.72,952.41)" text-anchor="middle">60</text>
+	<line x1="390.80" y1="558.25" x2="350.83" y2="558.25" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="300.72" y="558.25" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 300.72,558.25)" text-anchor="middle">70</text>
+	<line x1="390.80" y1="164.22" x2="350.83" y2="164.22" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="300.72" y="164.22" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 300.72,164.22)" text-anchor="middle">80</text>
+	<text x="190.71" y="1167.25" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 190.71,1167.25)" text-anchor="middle">US Life Expectancy</text>
+	<line x1="390.80" y1="2233.63" x2="3859.02" y2="2233.63" style="stroke:#000000;stroke-width:5.76"/>
+	<line x1="454.16" y1="2233.63" x2="454.16" y2="2273.73" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="454.16" y="2363.59" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">1900</text>
+	<line x1="1122.41" y1="2233.63" x2="1122.41" y2="2273.73" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="1122.41" y="2363.59" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">1920</text>
+	<line x1="1790.79" y1="2233.63" x2="1790.79" y2="2273.73" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="1790.79" y="2363.59" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">1940</text>
+	<line x1="2459.04" y1="2233.63" x2="2459.04" y2="2273.73" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="2459.04" y="2363.59" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">1960</text>
+	<line x1="3127.41" y1="2233.63" x2="3127.41" y2="2273.73" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="3127.41" y="2363.59" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">1980</text>
+	<line x1="3795.66" y1="2233.63" x2="3795.66" y2="2273.73" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="3795.66" y="2363.59" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">2000</text>
+	<text x="2124.91" y="2473.60" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">Year</text>
+	<rect x="519.50" y="2558.24" width="3210.82" height="186.37" style="fill:#FFFFFF"/>
+	<rect x="522.38" y="2561.12" width="3205.06" height="180.61" style="fill:none;stroke:#000000;stroke-width:5.76"/>
+	<line x1="562.69" y1="2651.43" x2="937.16" y2="2651.43" style="stroke:#006000;stroke-width:8.64"/>
+	<line x1="2191.49" y1="2651.43" x2="2565.83" y2="2651.43" style="stroke:#FF4500;stroke-width:8.64"/>
+	<text x="997.05" y="2679.44" style="font-family:'Helvetica';font-size:79.94px;fill:#000000">Life expectancy, white males</text>
+	<text x="2625.85" y="2679.44" style="font-family:'Helvetica';font-size:79.94px;fill:#000000">Life expectancy, black males</text>
+</svg>
