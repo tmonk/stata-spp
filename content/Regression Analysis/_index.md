@@ -248,7 +248,7 @@ The issue is clear from the graph below: for countries with a log GNP per capita
     legend(order(1 "Actual values" 2 "Fitted values")) ///
     scheme(s1color)
 ```
-<img src="Fig11.png" class="img-responsive center-block"/>
+<img src="Fig11.svg" class="img-responsive center-block"/>
 
 Two of the most popular alternatives when dealing with binary outcome variables are the probit and logit estimators. The two estimators involve slightly different distributional assumptions but should produce roughly the same results. To run these regressions, use the `probit` (or `logit`) command.
 
