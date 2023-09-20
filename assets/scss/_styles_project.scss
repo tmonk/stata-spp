@@ -45,6 +45,10 @@ div.code-toolbar{
     font-size: 0.9rem;
 }
 
+.td-outer{
+    width: 80%;
+}
+
 @media  (max-width: 770px) {
     nav.td-navbar > .container-fluid{
         height: 3rem !important;
