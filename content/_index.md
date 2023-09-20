@@ -15,11 +15,11 @@ To illustrate how Stata can be employed to explore policy questions, let us cons
 
 We can explore this relationship by loading a dataset held in Stata's system with information on life expectancy and gross national product (GNP) per capita in 1998 for 68 countries (in section 3.1 we explain how to load data in more detail). To visualise the relationship between a country's GNP per capita and life expectancy, draw a scatter plot using the `twoway` command (more on this in section 4.1). 
 
-<img src="Fig1.png" class="img-responsive center-block"/>
+<img src="Fig1.svg" class="img-responsive center-block"/>
 
 The plot shows a positive relationship between income per capita and life expectancy, but the relationship is not linear: life expectancy varies less with GNP per capita for richer countries. To account for this, we might want to plot GNP per capita on a ratio scale instead of a linear scale (explained in section 4.1.3). 
 
-<img src="Fig2.png" class="img-responsive center-block"/>
+<img src="Fig2.svg" class="img-responsive center-block"/>
 
 The relationship looks almost linear, apart from a possible outlier with a low life expectancy of 54. We can identify this country using the `list` command (described in section 3.2) to list all countries with a life expectancy under 55. The outlier in question is Haiti, as labelled on our figure (more on labelling points in section 4.1.3).
 
