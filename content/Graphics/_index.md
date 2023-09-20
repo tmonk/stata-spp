@@ -56,7 +56,7 @@ Confidence bands around a fitted line depict the upper and lower bounds between 
 
 ``` 
 
-<img src="Fig3.png" class="img-responsive center-block"/>
+<img src="Fig3.svg" class="img-responsive center-block"/>
 
 Three forward slashes “///” in a do file are called continuation lines and tell Stata that a command continues along the next line. Continuation lines improve the readability of long commands and are especially useful when we start adding more options to our graphs.
 
@@ -77,7 +77,7 @@ twoway line le_wmale le_bmale year ///
 
 ``` 
 
-<img src="Fig4.png" class="img-responsive center-block"/>
+<img src="Fig4.svg" class="img-responsive center-block"/>
 
 ### 4.1.3 Titles, Labels, Legends, and More
 
@@ -161,7 +161,7 @@ To specify the life expectancy range as 50 to 80 on a logarithmic scale in our s
         scheme(s1color)
 
 ```
-<img src="Fig5.png" class="img-responsive center-block"/>
+<img src="Fig5.svg" class="img-responsive center-block"/>
 
 ### 4.1.4 Colour and Style
 
@@ -196,7 +196,7 @@ Line plot of white and black male life expectancy over the 20th century in the s
       yscale(log range(25 80)) ///
 	scheme(economist)
 ```
-<img src="Fig6.png" class="img-responsive center-block"/>
+<img src="Fig6.svg" class="img-responsive center-block"/>
 
 
 ## 4.2 Other Graphs {#s42}
@@ -229,7 +229,7 @@ Using the over() option overlays the two bars in the same graph. Using the by() 
       scheme(s1color) bar(1, color(dkgreen)) bar(2, color(navy))
 
 ```
-<img src="Fig7.png" class="img-responsive center-block"/>
+<img src="Fig7.svg" class="img-responsive center-block"/>
 
 ### 4.2.2 Box Plots
 
@@ -247,7 +247,7 @@ To draw the box plot for January temperatures in northern regions (regions coded
 , over(region) title(Box Plots of January Temperature by Region) scheme(s1color)
 
 ```
-<img src="Fig8.png" class="img-responsive center-block"/>
+<img src="Fig8.svg" class="img-responsive center-block"/>
 
 We see that temperatures are lower and more variable in north-central regions, where quite a few cities have unusually cold average temperatures.
 
@@ -268,7 +268,7 @@ For a more detailed view of the distribution of a single variable, we can create
          xtitle("Life Expectancy") ///
          scheme(s1color)
 ```
-<img src="Fig9.png" class="img-responsive center-block"/>
+<img src="Fig9.svg" class="img-responsive center-block"/>
 
 We often assume that a variable is approximately distributed with a normal distribution. Kdesnity plots are a good way to assess the validity of this assumption. Use the `, normal` option to add a normal distribution to our kernel density plot of life expectancy for comparison.
 
@@ -282,7 +282,7 @@ We often assume that a variable is approximately distributed with a normal distr
          scheme(s1color)
 
 ```
-<img src="Fig10.png" class="img-responsive center-block"/>
+<img src="Fig10.svg" class="img-responsive center-block"/>
 
 
 ## 4.3 Managing Graphs {#s43}
