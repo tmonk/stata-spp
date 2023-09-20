@@ -49,6 +49,16 @@ div.code-toolbar{
     width: 80%;
 }
 
+.lastmod{
+    font-size: 0.8em;
+    color: #8c8c8c;
+}
+
+.lastmod a{
+    color: #8c8c8c;
+    text-decoration: underline;
+}
+
 @media  (max-width: 770px) {
     nav.td-navbar > .container-fluid{
         height: 3rem !important;

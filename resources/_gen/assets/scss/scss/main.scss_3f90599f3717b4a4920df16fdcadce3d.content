@@ -18722,6 +18722,20 @@ a:hover.td-sidebar-link.tree-root {
   overflow-y: auto;
   padding-top: 2em; }
 
+div.code-toolbar {
+  font-size: 0.9rem; }
+
+.td-outer {
+  width: 80%; }
+
+.lastmod {
+  font-size: 0.8em;
+  color: #8c8c8c; }
+
+.lastmod a {
+  color: #8c8c8c;
+  text-decoration: underline; }
+
 @media (max-width: 770px) {
   nav.td-navbar > .container-fluid, nav.td-navbar > .container-sm, nav.td-navbar > .container-md, nav.td-navbar > .container-lg, nav.td-navbar > .container-xl, nav.td-navbar > .container-xxl {
     height: 3rem !important; }
