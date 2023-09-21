@@ -87,8 +87,8 @@ For example, to create dummy variables to represent 5-year age groups between 20
 
 The second looping command is `foreach` and is used for looping over items in a list. The syntax for a foreach loop is:
 
-```
-foreach i in list {
+```stata
+. foreach i in list {
 … loop using `i’ …
 }
 ```
