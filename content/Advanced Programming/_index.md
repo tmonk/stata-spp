@@ -63,7 +63,7 @@ If you find yourself having to repeat the same task over and over, there is like
 
 The command for looping over a sequence of numbers takes the form:
 
-```
+```stata
 forvalues i = sequence {
 … loop using `i’ …
 }
