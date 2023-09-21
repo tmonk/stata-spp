@@ -196,7 +196,7 @@ Line plot of white and black male life expectancy over the 20th century in the s
       yscale(log range(25 80)) ///
 	scheme(economist)
 ```
-<img src="Fig6.svg" class="img-responsive center-block" style="width=40%"/>
+<img src="Fig6.svg" class="img-responsive center-block" style="width: 40%"/>
 
 
 ## 4.2 Other Graphs {#s42}
