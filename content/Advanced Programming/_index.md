@@ -10,7 +10,7 @@ This section provides a basic introduction to more advanced programming in Stata
 
 ## 6.1 Macros {#s61}
 
-A macro is simply a name associated with some text. If you find yourself trying the same words over and over in Stata, a macro can probably help. Macros can be local or global. Local macros are ephemeral. When you work with do-file editor, local macros are valid only in a single execution of commands in do-files or ado-files. Global macros are persisting. Once defined whether in do-file editor or in interactive command window, they persist until you delete them or the session is ended.
+A macro is simply a name associated with some text. If you find yourself typing the same words over and over in Stata, a macro can probably help. Macros can be local or global. Local macros are ephemeral. When you work with do-file editor, local macros are valid only in a single execution of commands in do-files or ado-files. Global macros are persisting. Once defined whether in do-file editor or in interactive command window, they persist until you delete them or the session is ended.
 
 A local macro is defined using the command `local name “text”` or `local name=expression`. You refer to a local macro using ``name’`.
 
