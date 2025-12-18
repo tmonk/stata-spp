@@ -1,7 +1,7 @@
 {{ if and (.GitInfo) (.Site.Params.github_repo) -}}
 <div class="text-muted mt-5 pt-3 border-top lastmod">
   {{ T "post_last_mod" }} {{ .Lastmod.Format .Site.Params.time_format_default -}}. <br />
-  By <a href="https://cep.lse.ac.uk/_new/people/person.asp?id=11174">Teresa Hall</a>, <a href="https://tdmonk.com/">Thomas Monk</a> & <a href="https://www.jeremiahdittmar.info/">Jeremiah Dittmar</a>. <br />
+  By <a href="https://cep.lse.ac.uk/_new/people/person.asp?id=11174">Tessa Hall</a>, <a href="https://tdmonk.com/">Thomas Monk</a> & <a href="https://www.jeremiahdittmar.info/">Jeremiah Dittmar</a>. <br />
   © Copyright 2023, London School of Economics.
   <!--{{ with .GitInfo }}: {{/* Trim WS */ -}}
     <a href="{{ $.Site.Params.github_repo }}/commit/{{ .Hash }}">
@@ -9,4 +9,5 @@
     </a>
   {{- end }} -->
 </div>
+
 {{ end -}}
