@@ -3,7 +3,4 @@
   {{ T "post_last_mod" }} {{ .GitInfo.AuthorDate.Format .Site.Params.time_format_default }}, commit <a href="{{ $.Site.Params.github_repo }}/commit/{{ .GitInfo.Hash }}">{{ .GitInfo.AbbreviatedHash }}</a>. <br />
   By <a href="https://cep.lse.ac.uk/_new/people/person.asp?id=11174">Tessa Hall</a>, <a href="https://tdmonk.com/">Thomas Monk</a> & <a href="https://www.jeremiahdittmar.info/">Jeremiah Dittmar</a>.
 </div>
-  {{- end }}
-</div>
-
 {{ end -}}
