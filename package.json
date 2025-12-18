@@ -9,7 +9,7 @@
   "bugs": "https://github.com/tmonk/stata-spp/issues",
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
   "scripts": {
-    "_build:docsy": "cd themes/docsy && npm install && npm run _prepare",
+    "_build:docsy": "cd themes/docsy && npm install",
     "_build": "npm run _build:docsy && npm run _hugo-dev",
     "_hugo": "hugo --cleanDestinationDir",
     "_hugo-dev": "npm run _hugo -- -e dev -DFE",
