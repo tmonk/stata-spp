@@ -73,8 +73,8 @@ privacy_policy = "https://policies.google.com/privacy"
 
 version_menu = "Releases"
 archived_version = false
-version = "1.0.1"
-url_latest_version = "https://example.com"
+version = "1.1.0"
+url_latest_version = "https://stata.jeremiahdittmar.info/"
 
 # Repository configuration
 github_repo = "https://github.com/tmonk/stata-spp"

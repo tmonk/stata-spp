@@ -1,12 +1,12 @@
 {
-  "name": "docsy-example-site",
-  "version": "0.7.1",
-  "description": "Example site that uses Docsy theme for technical documentation.",
-  "repository": "github:google/docsy-example",
-  "homepage": "https://example.docsy.dev",
-  "author": "Docsy Authors",
-  "license": "Apache-2.0",
-  "bugs": "https://github.com/google/docsy-example/issues",
+  "name": "stata-spp",
+  "version": "1.1.0",
+  "description": "Stata for Public Policy",
+  "repository": "github:tmonk/stata-spp",
+  "homepage": "https://stata.jeremiahdittmar.info/",
+  "author": "Tessa Hall, Thomas Monk & Jeremiah Dittmar",
+  "license": "Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+  "bugs": "https://github.com/tmonk/stata-spp/issues",
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
   "scripts": {
     "_build": "npm run _hugo-dev",
@@ -27,12 +27,13 @@
     "postbuild:production": "npm run _check:links",
     "serve": "npm run _serve",
     "test": "npm run check:links",
-    "update:pkg:dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
+    "update:pkg:dep": "npm install --save-dev autoprefixer@latest postcss@latest postcss-cli@latest",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "hugo-extended": "0.113.0",
-    "postcss-cli": "^10.1.0"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "hugo-extended": "0.128.0"
   }
 }
