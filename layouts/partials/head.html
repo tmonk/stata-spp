@@ -44,5 +44,5 @@
 {{ partial "hooks/head-end.html" . -}}
 
 {{ if hugo.IsProduction -}}
-  {{ partial "_internal/google_analytics.html" . }}
+  {{ template "_internal/google_analytics.html" . }}
 {{ end -}}
