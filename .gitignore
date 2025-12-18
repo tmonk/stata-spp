@@ -3,3 +3,5 @@ layouts/.DS_Store
 layouts/.DS_Store
 desktop.ini
 node_modules/*
+public/
+.hugo_build.lock

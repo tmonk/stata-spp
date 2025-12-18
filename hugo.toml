@@ -108,13 +108,11 @@ enable = true
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.125.0"
+    min = "0.152.2"
   [[module.imports]]
-    path = "github.com/google/docsy"
+    path = "docsy"
     disable = false
-  [[module.imports]]
-    path = "github.com/google/docsy/dependencies"
-    disable = false
+    min = "0.13.0"
 
 # Cascade configuration
 [[cascade]]
