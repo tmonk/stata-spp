@@ -4,4 +4,4 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/tmonk/docsy.git
-	branch = custom-v0.13.0
+	branch = custom-v0.7.1
