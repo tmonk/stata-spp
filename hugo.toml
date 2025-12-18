@@ -112,7 +112,7 @@ enable = true
   [[module.imports]]
     path = "docsy"
     disable = false
-    min = "0.13.0"
+    version = "0.7.1"
 
 # Cascade configuration
 [[cascade]]
